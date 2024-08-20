@@ -1,9 +1,9 @@
 import pygame
-
-# from src.controllers import layer_controller
 from src.controllers.layer_controller import LayerController
 from src.data.layers.background_layer import BackgroundLayer
 from src.data.layers.player_layer import PlayerLayer
+from src.data.layers.square_layer import SquareLayer
+from src.utils.files_handler import loadImage
 
 class GameController:
     screen: pygame.Surface
@@ -11,8 +11,8 @@ class GameController:
 
     layer_controller: LayerController
 
-    WIDTH = 300
-    HEIGHT = 300
+    WIDTH = 500
+    HEIGHT = 500
     GAME_NAME = 'Jogo incrivel'
     
     '''
@@ -23,12 +23,15 @@ class GameController:
 
         self.screen = self.setResolution(self.WIDTH, self.HEIGHT)
         pygame.display.set_caption(self.GAME_NAME)
+        
         self.clock = pygame.time.Clock()
+        pygame.display.set_icon(loadImage("heart.png"))
 
         self.layer_controller = LayerController(self)
         
         self.layer_controller.addLayer("background", BackgroundLayer())
         self.layer_controller.addLayer("player", PlayerLayer())
+        self.layer_controller.addLayer("square", SquareLayer())
 
         self.run()
 

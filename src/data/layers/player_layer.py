@@ -1,11 +1,19 @@
-import pygame
+import src.controllers.data_controller as DataController
 from src.dto.layer_dto import LayerDTO
+from src.utils.coordinate_handler import centerImageInSurface
+from src.utils.files_handler import loadImage
+# from src.controllers.game_controller import GameController
 
 class PlayerLayer(LayerDTO):
-    def run(self, screen, clock):
-        te = pygame.Rect(0,0,100, 100)
-        pygame.draw.rect(
-            screen,
-            "red",
-            te
+    def init(self, game):
+        DataController.saveImage(
+            "heart",
+            loadImage("heart.png")
         )
+
+    def run(self, game):
+        heart_image = DataController.getImage("heart")
+        game.screen.blit(
+            heart_image,
+            centerImageInSurface(game.screen, heart_image)
+        )   

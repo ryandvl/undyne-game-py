@@ -1,5 +1,8 @@
 from src.dto.layer_dto import LayerDTO
 
 class BackgroundLayer(LayerDTO):
-    def run(self, screen, clock):
-        screen.fill("purple")
+    def init(self, game):
+        pass
+    
+    def run(self, game):
+        game.screen.fill("black")
