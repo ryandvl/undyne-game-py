@@ -2,7 +2,7 @@ import pygame
 from src.dto.layer_dto import LayerDTO
 
 class SquareLayer(LayerDTO):
-    def init(self, game):
+    def init(self, _):
         pass
 
     def run(self, game):
